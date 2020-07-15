@@ -1,0 +1,243 @@
+body {
+    margin: 0;
+    background-color:#F5F6FA;
+}
+
+/* ******************************************************* */
+/* Header Section  */
+
+.main {
+    height:100vh;
+    background-color:gray;
+}
+
+#nav {
+    /* background-color: blue; */
+    height: 50px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left:10px;
+}
+
+.header-container {
+    padding-top:10px;
+    padding-bottom:10px;
+}
+
+.title-container {
+    color:#cacbcf;
+}
+
+.title-container h1 {
+    color: #fc3c3c;
+    margin-bottom:0;
+}
+
+.search-container {
+    display:flex;
+    align-items: center;
+}
+
+
+/* .title-container h4 {
+    color:#cacbcf;
+    text-transform:uppercase;
+} */
+
+/* ******************************************************* */
+/* Stat Section */
+
+.stats-container {
+    height:80px;
+    margin-top:0;
+}
+
+.stats-container .card {
+    background-color:#EFF;
+    border-radius:12px;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);
+    transition:500ms ease-in-out;
+    cursor:pointer;
+    /* box-shadow:0 0 8px -4x rgba(0,0,0, 0.5); */
+}
+
+.stats-container .card-body {
+    /* padding:1rem; */
+    margin: 0;
+    /* background-color: antiquewhite; */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+}
+
+.stats-container .card-title {
+    color:#695d5c;
+    font-weight:400;
+}
+
+.stats-container .card-subtitle {
+    font-weight:600;
+}
+
+.stats-container .total {
+    font-size: 0.8rem;
+}
+
+
+.total-number {
+    /* color:#1d2c4d; */
+    color:#cc1034;
+}
+
+/* .active-number {
+    color:#9d80fe;
+} */
+
+.recovered-number {
+    /* color:#7dd71d; */
+    color:#7fd922;
+}
+
+.deaths-number {
+    /* color:#fb4443; */
+    color:#fa5575;
+}
+
+.card:hover {
+   background-color: lightyellow;
+   transform:scale(1.03, 1.03);
+}
+
+/* .active {
+   background-color:yellow;
+} */
+
+/* ******************************************************* */
+/* MAP SECTION */
+
+.map-container {
+    height:450px;
+    padding-top:20px;
+    /* background-color:orange; */
+}
+
+.map-info {
+    background-color: bisque;
+    height: 100%;
+}
+
+#map  {
+    width: 100%;
+    /* height:auto; */
+    height: 100%;
+}
+
+/* ******************************************************* */
+/* **Info Window Styling** */
+
+.info-container {
+    width:150px;
+    text-align:center;
+ }
+ 
+ .country-flag {
+     max-height:50%;
+     min-width:100%;
+     border-radius:8px;
+ }
+ 
+ .info-name {
+     margin-top:10px 0px 5px 0px;
+     font-size: 20px;
+     font-weight: bold;
+     color:#555;
+     /* padding-bottom:5px; */
+     border-bottom:1px solid gray;
+ }
+ 
+ .info-recovered, .info-confirmed, .info-deaths  {
+     font-size:16px;
+     margin-top:5px;
+ }
+ 
+ .country-flag img {
+     max-width:100%;
+     border-radius: 5px;
+ }
+ 
+/* ******************************************************* */
+ /* side panel container */
+
+.side-panel-container {
+    height:100vh;
+    background-color:#FFF;
+    /* box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5); */
+    /* background-color:brown; */
+    
+}
+
+
+ /* COUNTRY DATA TABLE */
+.country {
+    height:65%;
+    background-color:whitesmoke; 
+}
+
+#country-data {
+    height:100%;
+    width:100%;
+    overflow-y: scroll;  
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);
+}
+
+#country-data h3 {
+    padding-top:10px;
+    text-align:center;
+}
+#country-data tr {
+    margin:0;
+    padding:0;
+    border:none;
+}
+
+#country-data tr td {
+    margin:0;
+    padding:8px;
+    border:none;
+}
+
+#country-data tr td img {
+   width:40px;
+   height:auto;
+}
+
+
+ /* LINE GRAPH/CHART */
+.chart {
+    height:35%;
+}
+
+.chart-container {
+    position:relative;
+    padding-top:15px;
+    /* border-top:1px solid lightgray; */
+    width:100%;
+    height:500px;
+    /* border-bottom:1px solid lightgray; */
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);
+}
+
+
+#line-chart {
+    width:100%;
+    height:100%;
+}
+
+
+/* .graph-info {
+    height:380px;
+    background-color:lightgray;
+    align-items: center;
+    column-gap:10px;
+} */
