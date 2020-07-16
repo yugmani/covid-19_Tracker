@@ -54,7 +54,7 @@ const buildPie = (pieData)=>{
             title: {
                 display: true,
                 text: 'Continental Comparison',
-                fontSize:30,
+                fontSize:25,
                 responsive:true,
                 maintainAspectRatio:false
             }

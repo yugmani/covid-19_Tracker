@@ -23,7 +23,7 @@ window.onload = () =>{
     getCountryData();
     // buildChart();
     getHistoricalData();
-    // getContinentData();
+    getContinentData();
     getWorldCoronaData();
 }
 

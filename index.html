@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="./assets/style.css">
     <link rel="stylesheet" href="./assets/toggle_style.css">
     <script src="./assets/map-style.js"></script>
-    <!-- <script src="script_pie.js"></script> -->
+    <script src="script_pie.js"></script>
     <script src="script_alter.js"></script>
     <script src="script.js"></script>
     
@@ -21,13 +21,13 @@
 <body>
   <div class="container-fluid main">
       <div class="row first-row">
-          <div class="col-8">
+          <div class="col-9">
                 <div class="row header-container">
-                    <div class="col title-container">
-                        <h1>Covid-19 Tracker</h1>
-                        <!-- <h4></h4> -->
+                    <div class="col-8 title-container">
+                      <h1>C<img src="assets/pngtree-coronavirus.jpg" id="corona-image" width="50px" height="50px">vid-19 Tracker</h1>
+                        
                     </div>
-                    <div class="col search-container">
+                    <div class="col-4 search-container">
                         <div class="input-group">
                           <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-search"></i></span>
@@ -39,42 +39,47 @@
                 <div class="row stats-container mb-2 mt-2">
                     <div class="col">
                       <div class="card" onclick="changeDataSelection(this, 'cases');">
-                        <div class="card-body">
+                        <div class="col-9 card-body">
                           <h6 class="card-title">Covid-19 Cases</h6>
                           <h4 class="card-subtitle mb-2 total-number">1436886</h4>
                           <div class="text-muted font-weight-bold total cases-total">1.69M Total</div>
                         </div>
+                        <div class="col-3 stat-image" style="padding-left:10px;justify-content: left;">
+                          <img src="https://img.icons8.com/color/48/000000/being-sick.png"/>
+                        </div>
                       </div>
                     </div>
-                <!-- <div class="col">
-                  <div class="card active-cases-card" onclick="changeDataSelection(this, 'active');">
-                    <div class="card-body">
-                      <h5 class="card-title">Active Cases</h5>
-                      <h6 class="card-subtitle mb-2 active-number">113866</h6>
-                    </div>
-                  </div>
-                </div> -->
+                
                     <div class="col">
                     <div class="card" onclick="changeDataSelection(this, 'recovered');">
-                      <div class="card-body">
+                      <div class="col-9 card-body">
                         <h6 class="card-title">Recovered</h6>
                         <h4 class="card-subtitle mb-2 recovered-number">43866</h4>
                         <div class="text-muted font-weight-bold total recovered-total">1.69M Total</div>
                       </div>
+                      <div class="col-3 stat-image" style="padding-left:10px;justify-content: left;">
+                        <img src="https://img.icons8.com/color/48/000000/recovery.png"/>
+                      </div>
                     </div>
                     </div>
+
                     <div class="col">
                     <div class="card" onclick="changeDataSelection(this, 'deaths');">
-                      <div class="card-body">
+                      <div class="col-8 card-body">
+                        
                         <h6 class="card-title">Deaths</h6>
                         <h4 class="card-subtitle mb-2 deaths-number">2191</h4>
                         <div class="text-muted font-weight-bold total deaths-total">1.69M Total</div>
+                    
                       </div>
+                      <div class="col-4 stat-image" style="padding-left:10px;justify-content: left;">
+                      <img src="https://img.icons8.com/color/48/000000/death.png"/>
+                    </div>
                     </div>
                     </div>
                 </div>
             
-                <div class="row map-container mt-3">
+                <div class="row map-container">
                     <div class="col">
                         <div class="map-info">
                         
@@ -87,65 +92,39 @@
         </div>
 
       <!--Table for Countrywise data-->
-      <div class="col-4 side-panel-container">
-             <div class="row country" >
-              <div class="col" id="country-data">            
+      <div class="col-3 side-panel-container">
+             <div class="country-data" >
+                         
                     <h3>Live Cases By Country</h3>
                     <table class="table">
-                        <!-- <thead>
-                          <tr>
-                            <th scope="col">COUNTRY</th>
-                            <th scope="col">CASES</th>
-                            
-                          </tr>
-                        </thead> -->
-                    <tbody id="table-data">
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                      </tr>
-                    </tbody>
+                        <tbody id="table-data">
+                        </tbody>
                     </table>
-              </div>
             </div>
-          <div class="row chart">
-                <div class="chart-container">
-                  <canvas id="line-chart">
-                  </canvas>
-                </div>
-              
-          </div>  <!--for row of chart section -->
 
       </div> <!--for side-panel-container-->
         
   </div> <!--for first main row-->
 
+        <!--CHART Container-->
+  <div class="row graph-info mb-3 mt-5">
+          <div class="col-6 chart-container">
+            <canvas id="line-chart"></canvas>
+          </div>
+
+          <div class="col-6 chart-container">
+            <canvas id="pie-chart"></canvas>
+          </div>
+  
+  </div>  <!--for row of chart section -->
+  
+
 </div> <!--for main-container-->
        
-     <!--Graph Container-->
-          <!-- "graph-info" -->
-    <!-- <div class="row graph-info mb-3">
+     
+    
          
-          
-          <div class="col-6">
-              <canvas id="pie-chart">
-              </canvas>
-          </div>
-        </div> 
-    </div> -->
+   
 
 
     <!--Navigation bar-->
@@ -157,7 +136,7 @@
         </label>
       </div>
     </div> -->
-
+    <!-- <div>coronavirus PNG Designed By GraphicHost from <a href="https://pngtree.com/">Pngtree.com</a></div> -->
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkJLSTy_d7Y_EarIbeAad_1Ppm00zAF-Q&callback=initMap"
         async defer></script>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
