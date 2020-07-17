@@ -77,6 +77,7 @@ body {
     flex-direction:row;
     justify-content: space-between;
     align-items: center;  
+    overflow:hidden;
 }
 
 
@@ -128,6 +129,28 @@ body {
    transform:scale(1.03, 1.03);
 }
 
+
+.tab-selection {
+   height: 10px;
+   background-color:#cc1034;
+   /* border-top-color:blanchedalmond; */
+   position:absolute;
+   top:0;
+   left:0;
+   right:0; 
+}
+
+.cases .tab-selection {
+    background-color:#cc1034;
+}
+
+.recovered .tab-selection {
+    background-color:#7fd922;
+}
+
+.deaths .tab-selection {
+    background-color:#fa5575;
+}
 
 /* .active {
    background-color:yellow;
@@ -241,6 +264,11 @@ body {
     height:100%;
 }
 
+
+.corona {
+    background-color:lightgray;
+    padding:15px;
+}
 
 /* .graph-info {
     height:380px;

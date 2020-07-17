@@ -5,18 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COVID-19 Tracker</title>
     
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/dropdown.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/transition.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     
-    <link rel="stylesheet" href="./assets/style.css">
-    <link rel="stylesheet" href="./assets/toggle_style.css">
-    <script src="./assets/map-style.js"></script>
-    <script src="script_pie.js"></script>
-    <script src="script_alter.js"></script>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/toggle_style.css">
+    <script src="./assets/js/map-style.js"></script>
+    <script src="assets/js/newscrape.js"></script>
+    <script src="./assets/js/script_line_chart.js"></script>
+    <script src="./assets/js/script_pie.js"></script>
     <script src="script.js"></script>
-    
   </head>
 <body>
   <div class="container-fluid main">
@@ -24,21 +27,30 @@
           <div class="col-9">
                 <div class="row header-container">
                     <div class="col-8 title-container">
-                      <h1>C<img src="assets/pngtree-coronavirus.jpg" id="corona-image" width="50px" height="50px">vid-19 Tracker</h1>
+                      <h1>C<img src="assets/images/pngtree-coronavirus.jpg" id="corona-image" width="50px" height="50px">vid-19 Tracker</h1>
                         
                     </div>
                     <div class="col-4 search-container">
-                        <div class="input-group">
+                      <div class="ui fluid multiple search selection dropdown">
+                        <input type="hidden" name="country">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Select Country</div>
+                        <div class="menu">
+                        
+                        </div>
+                      </div>
+                        <!-- <div class="input-group">
                           <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-search"></i></span>
                           </div>
                           <input type="text" class="form-control" placeholder="Search Location">
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="row stats-container mb-2 mt-2">
                     <div class="col">
-                      <div class="card" onclick="changeDataSelection(this, 'cases');">
+                      <div class="card cases" onclick="changeDataSelection(this, 'cases');">
+                        <div class="tab-selection"></div>
                         <div class="col-9 card-body">
                           <h6 class="card-title">Covid-19 Cases</h6>
                           <h4 class="card-subtitle mb-2 total-number">1436886</h4>
@@ -51,7 +63,8 @@
                     </div>
                 
                     <div class="col">
-                    <div class="card" onclick="changeDataSelection(this, 'recovered');">
+                    <div class="card recovered" onclick="changeDataSelection(this, 'recovered');">
+                      <div class="tab-selection"></div>
                       <div class="col-9 card-body">
                         <h6 class="card-title">Recovered</h6>
                         <h4 class="card-subtitle mb-2 recovered-number">43866</h4>
@@ -64,7 +77,8 @@
                     </div>
 
                     <div class="col">
-                    <div class="card" onclick="changeDataSelection(this, 'deaths');">
+                    <div class="card deaths" onclick="changeDataSelection(this, 'deaths');">
+                      <div class="tab-selection"></div>
                       <div class="col-8 card-body">
                         
                         <h6 class="card-title">Deaths</h6>
@@ -117,7 +131,30 @@
           </div>
   
   </div>  <!--for row of chart section -->
-  
+
+  <!-- news section -->
+  <div class="row corona-news">
+    <div class="col-6 corona">
+        <div class="card" style="width: 18rem;">
+          <img src="https://cdn.cnn.com/cnnnext/dam/assets/200716092743-chris-evans-bridger-walker-dog-attack-good-stuff-newday-vpx-00012824-super-tease.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem quaerat voluptate explicabo mollitia, consequatur minus dicta at in iure expedita voluptas quis dolorem sit amet voluptatibus vel dolores culpa velit voluptatem tenetur. Autem perferendis minus ea magnam et incidunt voluptatem?</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+    </div>
+    <div class="col-6 corona">
+      <div class="card" style="width: 18rem;">
+        <img src="https://ichef.bbci.co.uk/news/1024/branded_news/108C7/production/_113438776_p08kzfym.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque, esse odio impedit, blanditiis tempore maiores at officia iste provident neque fugit perferendis labore iusto, ex voluptatem illum incidunt sunt obcaecati debitis similique facilis est nulla.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+  </div>
+  </div> <!--row of news section -->
 
 </div> <!--for main-container-->
        
@@ -142,6 +179,8 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/dropdown.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/transition.min.js"></script>
         
 </body>
 </html>
