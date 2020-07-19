@@ -1,29 +1,19 @@
 body {
     margin: 0;
-    /* background-color:#F5F6FA; */
+    padding:0;
 }
 
 /* ******************************************************* */
 /* Header Section  */
 
 .main {
-    
-    /* background-color: #FFFAF0; */
-    background-color:#F3F3F3
+    background-color:#F3F3F3;
+    /* max-width:1280px; */
+    /* min-height:900px; */
 }
 
-.first-row {
-    height:100vh;
-}
-
-#nav {
-    /* background-color: blue; */
-    height: 50px;
-    display:flex;
-    flex-direction:row;
-    justify-content: space-around;
-    align-items: center;
-    padding-left:10px;
+.left-panel {
+    max-height:900px;
 }
 
 .header-container {
@@ -54,16 +44,11 @@ body {
 }
 
 
-/* .title-container h4 {
-    color:#cacbcf;
-    text-transform:uppercase;
-} */
-
 /* ******************************************************* */
 /* Stat Section */
 
 .stats-container {
-    height:100px;
+    min-height:100px;
     margin-top:0;
 }
 
@@ -81,11 +66,8 @@ body {
 }
 
 
-
 .stats-container .card-body {
-    /* padding:1rem; */
     margin: 0;
-    /* background-color: antiquewhite; */
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 20px;
@@ -106,38 +88,40 @@ body {
 
 
 .total-number {
-    /* color:#1d2c4d; */
     color:#cc1034;
 }
 
-/* .active-number {
-    color:#9d80fe;
-} */
-
 .recovered-number {
-    /* color:#7dd71d; */
     color:#7fd922;
 }
 
 .deaths-number {
-    /* color:#fb4443; */
     color:#fa5575;
 }
 
+.card.active >.tab-selection {
+    opacity:1;
+}
+
+.card:hover >.tab-selection {
+   opacity:1;
+}
+
 .card:hover {
-   background-color: lightyellow;
-   transform:scale(1.03, 1.03);
+    background-color: lightyellow;
+    transform:scale(1.02, 1.02);
 }
 
 
 .tab-selection {
    height: 10px;
    background-color:#cc1034;
-   /* border-top-color:blanchedalmond; */
    position:absolute;
    top:0;
    left:0;
    right:0; 
+   opacity:0;
+   transition:all 0.2s;
 }
 
 .cases .tab-selection {
@@ -152,17 +136,12 @@ body {
     background-color:#fa5575;
 }
 
-/* .active {
-   background-color:yellow;
-} */
-
 /* ******************************************************* */
 /* MAP SECTION */
 
 .map-container {
     height:430px;
-    padding-top:15px;
-    /* background-color:orange; */
+    padding-top:10px;
 }
 
 .map-info {
@@ -172,9 +151,120 @@ body {
 
 #map  {
     width: 100%;
-    /* height:auto; */
     height: 100%;
 }
+
+ 
+/* ******************************************************* */
+ /* side panel container */
+ /* COUNTRY DATA TABLE */
+
+.side-panel-container {
+    /* max-height:900px; */
+    height:auto;
+    background-color:#FFF;
+    /* background-color:whitesmoke;    */
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);  
+}
+
+ .country-data {
+    max-height:100vh;
+    margin-top:15px;
+    overflow-y: scroll; 
+    padding-left:8px;
+ }
+
+ .title-country-data {
+    text-align:left;
+    margin-left:8px;
+ }
+
+#table-data tr {
+    margin:0;
+    padding:0;
+    border:none;
+}
+
+#table-data tr td {
+    margin:0;
+    padding:8px;
+    border:none;
+}
+
+#table-data tr td img {
+   width:40px;
+   height:auto;
+}
+
+/* ******************************************************* */
+ /* LINE GRAPH/CHART */
+ .second-row {
+     display:flex;
+     flex-direction:row;
+ }
+
+.chart-container {
+    background-color:lightgray;;
+    /* box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);  */
+    height:100%;
+    display:flex;
+    flex-direction:column;  
+    justify-content: space-between; 
+}
+
+#line-chart, #pie-chart {
+    width:100%;
+    min-height:350px;
+    flex-grow:1;
+}
+
+/* ******************************************************* */
+/* News Section */
+
+.corona-news {
+    text-align:center;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top:15px;
+    margin-bottom:15px;
+}
+ 
+ .corona-section{
+     color:#8B0000;
+ }
+ .corona {
+     flex-grow:1;
+     background-color:lightgray;
+ }
+
+ .corona-news .card-body {
+    text-align:left;
+ }
+ .corona-news img {
+     text-align:center;
+     width:80%;
+     height:auto;
+ }
+
+/* ******************************************************* */
+/* Create animation for covid-19 image */
+@keyframes corona_animate {
+    0% {
+        transform:scale(1, 1);
+    }
+    35% {
+        transform:scale(1.02, 1.02);
+    }
+    
+    60% {
+        transform:scale(1.04, 1.04);
+    }
+    100% {
+        transform:scale(1.08, 1.06);
+    }
+    
+} /* @keyfram closing */
 
 /* ******************************************************* */
 /* **Info Window Styling** */
@@ -195,7 +285,6 @@ body {
      font-size: 20px;
      font-weight: bold;
      color:#555;
-     /* padding-bottom:5px; */
      border-bottom:1px solid gray;
  }
  
@@ -208,90 +297,16 @@ body {
      max-width:100%;
      border-radius: 5px;
  }
- 
-/* ******************************************************* */
- /* side panel container */
-
-.side-panel-container {
-    height:100%;
-    background-color:#FFF;
-    background-color:whitesmoke;   
-    overflow-y: scroll; 
-    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);  
-}
-
- /* COUNTRY DATA TABLE */
-
- .country-data {
-     margin-top:15px;
- }
-
-.country-data h3 {
-    text-align:center;
-}
-#table-data tr {
-    margin:0;
-    padding:0;
-    border:none;
-}
-
-#table-data tr td {
-    margin:0;
-    padding:8px;
-    border:none;
-}
-
-#table-data tr td img {
-   width:40px;
-   height:auto;
-}
 
 /* ******************************************************* */
- /* LINE GRAPH/CHART */
-
-.chart-container {
-    position:relative;
-    padding-top:15px;
-    width:100%;
-    height:auto;
-    background-color:whitesmoke;
-    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);
-}
-
-
-#line-chart {
-    width:100%;
-    height:100%;
-}
-
-
-.corona {
-    background-color:lightgray;
-    padding:15px;
-}
-
-/* .graph-info {
-    height:380px;
-    background-color:lightgray;
+/* Extra Styling */
+#nav {
+    height: 50px;
+    display:flex;
+    flex-direction:row;
+    justify-content: space-around;
     align-items: center;
-    column-gap:10px;
-} */
-
-
-@keyframes corona_animate {
-    0% {
-        transform:scale(1, 1);
-    }
-    35% {
-        transform:scale(1.02, 1.02);
-    }
-    
-    60% {
-        transform:scale(1.04, 1.04);
-    }
-    100% {
-        transform:scale(1.06, 1.06);
-    }
-    
-
+    padding-left:10px;
 }
+
+

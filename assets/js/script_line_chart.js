@@ -71,7 +71,7 @@ const buildChart = (chartData)=>{
             datasets: [
                 {
                     label: 'Cases',
-                    backgroundColor: '#8B0000',
+                    backgroundColor: '#cc1034',
                     fill:false,
                     borderColor: '#008000',
                     borderWidth: 1,
@@ -82,7 +82,7 @@ const buildChart = (chartData)=>{
                 },
                 {
                     label: 'Recovered',
-                    backgroundColor: '#008000',
+                    backgroundColor: '#7FD922',
                     fill:false,
                     borderColor: '#4B0082',
                     borderWidth: 1,
@@ -93,7 +93,7 @@ const buildChart = (chartData)=>{
                 }, 
                 {
                     label: 'Deaths',
-                    backgroundColor: '#4B0082',
+                    backgroundColor: '#fa5575',
                     fill:false,
                     borderColor: '#8B0000',
                     borderWidth: 1,
@@ -107,6 +107,8 @@ const buildChart = (chartData)=>{
 
         // Configuration options go here
         options: {
+            responsive: true,
+            maintainAspectRatio: false,
             tooltips: {
                 mode: 'index',
                 intersect: false,
@@ -135,6 +137,9 @@ const buildChart = (chartData)=>{
 
                 }],
                 yAxes: [{
+                    gridlines: {
+                        display:false
+                    },
                     ticks: {
                         // Include a dollar sign in the ticks
                         callback: function(value, index, values) {

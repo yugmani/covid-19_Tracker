@@ -51,13 +51,15 @@ const buildPie = (pieData)=>{
             },
 
             options: {
-            title: {
-                display: true,
-                text: 'Continental Comparison',
-                fontSize:25,
-                responsive:true,
-                maintainAspectRatio:false
-            }
+                responsive: true,
+                maintainAspectRatio: false,
+                title: {
+                    display: true,
+                    text: 'Continental Comparison',
+                    fontSize:25,
+                    // responsive:true,
+                    // maintainAspectRatio:false
+                }
         }
     });
 }

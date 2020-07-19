@@ -4,73 +4,77 @@
 var map;
 var infoWindow;
 let coronaGlobalData;   // to be used in the function getCountriesData().
+const mapCircles = [];
 const worldwideSelection = {
     name:"worldwide",
     value: "www",
     selected: true
 }
 
-// Various mapstyles
-var mapStyle = silverStyle;
-// var mapStyle = mapRetro;
-// var mapStyle = mapNavy;
-// var mapStyle = mapAubergine
-
-
-const mapCircles = [];
+// Casewise color selection
 var casesTypeColors = {
-    cases:'##cc1034',
-    // active:'#9d80fe',
+    cases:'#cc1034',
     recovered:'#7fd922',
     deaths:'#fa5575'
 }
 
+// COLLECTION OF MAPSTYLES FROM MAPSTYLE.JS
+var mapStyle = [
+    mapNavy,
+    silverStyle,
+    mapRetro,
+    mapAubergine
+]
+
+
 // INITIALIZING FUNCTIONS WHILE LOADING WINDOW
 window.onload = () =>{
     getCountriesData();
-    // buildChart();
     getHistoricalData();
     getContinentData();
     getWorldCoronaData();
     getNewsData();
 }
 
-// INITIALIZE GOOGLE MAP
+// Define default mapcenter
 const mapCenter = {
     lat:34.80746,
-    lng:-4004796
+    lng:-40.4796
 }
+
+// INITIALIZE GOOGLE MAP
 function initMap() {
     // toggleStyle();
     map = new google.maps.Map(document.getElementById('map'), {
         center: mapCenter,
-        zoom:2,
-        styles: mapStyle
+        zoom: 3,
+        styles: mapStyle[3]
     });
     infoWindow = new google.maps.InfoWindow();
 }
 
-const changeDataSelection = (element, casesType)=>{
-    // getWorldCoronaData();
+// Change Data on map based on selection of buttons
+const changeDataSelection = (elem, casesType)=>{
     clearTheMap();
     showDataOnMap(coronaGlobalData, casesType);
-    const cardEl = document.querySelectorAll('.card');
-    // console.log(cardEl);
-    for (let i=0; i<cardEl.length; i++){
-        // console.log(cardEl[i]);
-        // cardEl[i].classList.remove("active");
-    }
-//   element.classList.add("active");
+    setActiveTab(elem);
 }
 
+// Set active state on buttons.
+const setActiveTab = (elem) =>{
+    const activeEl = document.querySelector('.card.active');
+    activeEl.classList.remove('active');
+    elem.classList.add("active");        
+}
 
+// Clears the circles on the map on change
 const clearTheMap = ()=> {
     for(let circle of mapCircles){
         circle.setMap(null);
     }
 }
 
-// changing map center
+// To change map center after the selection of country
 const setMapCenter = (lat, long, zoom) =>{
     map.setZoom(zoom);
     map.panTo({
@@ -79,6 +83,7 @@ const setMapCenter = (lat, long, zoom) =>{
     });
 }
 
+// To initialize dropdown menu in search bar
 const initDropdown = (searchList)=>{
     $('.ui.dropdown').dropdown({
         values:searchList,
@@ -92,6 +97,7 @@ const initDropdown = (searchList)=>{
     });
 }
 
+// To create list of data to search. 
 const setSearchList = (data)=>{
     let searchList = [];
     searchList.push(worldwideSelection);
@@ -104,22 +110,31 @@ const setSearchList = (data)=>{
     initDropdown(searchList);
 }
 
+
+// GETTING DATA COUNTRYWISE COVID-19 DATA FROM API
+const getCountriesData = ()=>{
+    fetch("https://corona.lmao.ninja/v2/countries")
+    .then((response)=>{
+        return response.json();
+    }).then((data)=>{
+        coronaGlobalData = data;
+        setSearchList(data);
+        showDataOnMap(data);
+        showDataInTable(data);
+    })
+}
+
 const getCountryData = (countryIso) =>{
-    const url = "https://disease.sh/v3/covid-19/countries/"+countryIso;
+    const url = "https://disease.sh/v3/covid-19/countries/" + countryIso;
     fetch(url)
     .then((response)=>{
         return response.json()
     }).then((data)=>{
-        setMapCenter(data.countryInfo.lat, data.countryInfo.long, 2);
+        console.log(data.countryInfo.lat);
+        setMapCenter(data.countryInfo.lat, data.countryInfo.long, 3);
         setStatsData(data);
     })
 }
-
-
-// const hideActiveState = (element)=>{
-    
-// }
-
 
 // GETTING TOTAL WORLDWIDE CORONA DATA 
 const getWorldCoronaData = ()=>{
@@ -170,7 +185,6 @@ const showDataOnMap = (data, casesType="cases")=>{
           map: map,
           center: countryCenter,
           radius:country[casesType]
-        //   radius: country.casesPerOneMillion * 15
         });
 
         mapCircles.push(countryCircle);
@@ -215,22 +229,7 @@ const showDataOnMap = (data, casesType="cases")=>{
 }
 
 
-// GETTING DATA COUNTRYWISE COVID-19 DATA FROM API
-const getCountriesData = ()=>{
-    fetch("https://corona.lmao.ninja/v2/countries")
-    .then((response)=>{
-        // console.log(response);
-        return response.json();
-    }).then((data)=>{
-        // console.log(data);
-        coronaGlobalData = data;
-        setSearchList(data);
-        showDataOnMap(data);
-        showDataInTable(data);
-    })
-}
-
-// CREATING TABLE OF COUNTRYWISE DATA
+// SHOWING COUNTRYWISE DATA IN TABLE
 const showDataInTable = (data) =>{
     var html = "";
     data.forEach((country) => {
@@ -245,3 +244,7 @@ const showDataInTable = (data) =>{
     document.getElementById("table-data").innerHTML = html;
 }
 
+
+const openInfoWindow = () => {
+    infoWindow.open(map);
+}

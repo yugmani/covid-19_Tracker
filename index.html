@@ -5,16 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COVID-19 Tracker</title>
     
-
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/toggle_style.css">
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/dropdown.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/transition.min.css">
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/toggle_style.css">
     <script src="./assets/js/map-style.js"></script>
     <script src="assets/js/newscrape.js"></script>
     <script src="./assets/js/script_line_chart.js"></script>
@@ -23,14 +24,14 @@
   </head>
 <body>
   <div class="container-fluid main">
-      <div class="row first-row">
-          <div class="col-9">
+      <div class="row first-row left-panel mb-3">
+          <div class="col-12 col-lg-9 d-flex flex-column">
                 <div class="row header-container">
-                    <div class="col-8 title-container">
+                    <div class="col-lg-8 col-sm-12 title-container">
                       <h1>C<img src="assets/images/pngtree-coronavirus.jpg" id="corona-image" width="50px" height="50px">vid-19 Tracker</h1>
                         
                     </div>
-                    <div class="col-4 search-container">
+                    <div class="col-lg-4 col-sm-12 search-container mt-3 mt-sm-0">
                       <div class="ui fluid multiple search selection dropdown">
                         <input type="hidden" name="country">
                         <i class="dropdown icon"></i>
@@ -39,18 +40,13 @@
                         
                         </div>
                       </div>
-                        <!-- <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-search"></i></span>
-                          </div>
-                          <input type="text" class="form-control" placeholder="Search Location">
-                        </div> -->
                     </div>
                 </div>
                 <div class="row stats-container mb-2 mt-2">
-                    <div class="col">
-                      <div class="card cases" onclick="changeDataSelection(this, 'cases');">
+                    <div class="col-12 col-sm-4">
+                      <div class="card cases active" onclick="changeDataSelection(this, 'cases');">
                         <div class="tab-selection"></div>
+                        
                         <div class="col-9 card-body">
                           <h6 class="card-title">Covid-19 Cases</h6>
                           <h4 class="card-subtitle mb-2 total-number">1436886</h4>
@@ -59,10 +55,11 @@
                         <div class="col-3 stat-image" style="padding-left:10px;justify-content: left;">
                           <img src="https://img.icons8.com/color/48/000000/being-sick.png"/>
                         </div>
+                      
                       </div>
                     </div>
                 
-                    <div class="col">
+                    <div class="col-12 col-sm-4">
                     <div class="card recovered" onclick="changeDataSelection(this, 'recovered');">
                       <div class="tab-selection"></div>
                       <div class="col-9 card-body">
@@ -76,24 +73,25 @@
                     </div>
                     </div>
 
-                    <div class="col">
+                    <div class="col-12 col-sm-4">
                     <div class="card deaths" onclick="changeDataSelection(this, 'deaths');">
                       <div class="tab-selection"></div>
-                      <div class="col-8 card-body">
+                      <div class="col-9 card-body">
                         
                         <h6 class="card-title">Deaths</h6>
                         <h4 class="card-subtitle mb-2 deaths-number">2191</h4>
                         <div class="text-muted font-weight-bold total deaths-total">1.69M Total</div>
                     
                       </div>
-                      <div class="col-4 stat-image" style="padding-left:10px;justify-content: left;">
-                      <img src="https://img.icons8.com/color/48/000000/death.png"/>
+                      <div class="col-3 stat-image" style="padding-left:10px;justify-content: left;">
+                      <img src="https://img.icons8.com/color/45/000000/death.png"/>
                     </div>
                     </div>
                     </div>
                 </div>
-            
-                <div class="row map-container">
+                
+                <!-- MAP SECTION -->
+                <div class="row map-container flex-grow-1 mt-1 mb-2">
                     <div class="col">
                         <div class="map-info">
                         
@@ -103,65 +101,88 @@
                         </div>
                     </div>
                 </div>
-        </div>
 
-      <!--Table for Countrywise data-->
-      <div class="col-3 side-panel-container">
-             <div class="country-data" >
+                
+
+
+        </div> <!-- column closing -->
+
+      <!--side-panel-container-->
+      <div class="col-12 col-lg-3 side-panel-container">
+
+            <!--Table for Countrywise data-->
+             <div class="row country-data" >
                          
-                    <h3>Live Cases By Country</h3>
+                    <h3 class="title-country-data">Live Cases By Country</h3>
                     <table class="table">
                         <tbody id="table-data">
                         </tbody>
                     </table>
             </div>
+    
+          </div> <!--for side-panel-container-->
+        </div> <!--for first main row-->
 
-      </div> <!--for side-panel-container-->
+        <div class="row second-row">  <!--second main row--> 
+            <!-- NEWS SECTION -->
+            <div class="col-sm-12 col-lg-9 mb-3 mt-3">
+              <h2 class="corona-section ml-3">News of Corona Virus ...</h2>
+              <div class="corona-news">
+                
+
+              </div>
+
+            </div> <!--col of news section -->
+
+             <!--CHART Container-->
+             <div class="col-sm-12 col-lg-3 chart-container mb-3 mt-3">
+              <div class="p-2">
+                <canvas id="line-chart"></canvas>
+              </div>
+
+              <div class="p-2">
+                <canvas id="pie-chart"></canvas>
+              </div>
+
+            </div>  <!--for col of chart section -->
+
+        </div> <!--second main row closing-->
         
-  </div> <!--for first main row-->
-
-        <!--CHART Container-->
-  <div class="row graph-info mb-3 mt-5">
-          <div class="col-6 chart-container">
-            <canvas id="line-chart"></canvas>
-          </div>
-
-          <div class="col-6 chart-container">
-            <canvas id="pie-chart"></canvas>
-          </div>
-  
-  </div>  <!--for row of chart section -->
-
-  <!-- news section -->
-  <div class="row corona-news">
-    <div class="col-6 corona">
-        <div class="card" style="width: 18rem;">
-          <img src="https://cdn.cnn.com/cnnnext/dam/assets/200716092743-chris-evans-bridger-walker-dog-attack-good-stuff-newday-vpx-00012824-super-tease.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem quaerat voluptate explicabo mollitia, consequatur minus dicta at in iure expedita voluptas quis dolorem sit amet voluptatibus vel dolores culpa velit voluptatem tenetur. Autem perferendis minus ea magnam et incidunt voluptatem?</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-    </div>
-    <div class="col-6 corona">
-      <div class="card" style="width: 18rem;">
-        <img src="https://ichef.bbci.co.uk/news/1024/branded_news/108C7/production/_113438776_p08kzfym.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque, esse odio impedit, blanditiis tempore maiores at officia iste provident neque fugit perferendis labore iusto, ex voluptatem illum incidunt sunt obcaecati debitis similique facilis est nulla.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-  </div>
-  </div> <!--row of news section -->
 
 </div> <!--for main-container-->
        
-     
-    
-         
-   
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkJLSTy_d7Y_EarIbeAad_1Ppm00zAF-Q&callback=initMap"
+        async defer></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/dropdown.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/transition.min.js"></script>
+        
+</body>
+</html>
+
+
+<!-- <div class="col-12 col-lg-6 corona">
+  <div class="card">
+    <img src="https://cdn.cnn.com/cnnnext/dam/assets/200716092743-chris-evans-bridger-walker-dog-attack-good-stuff-newday-vpx-00012824-super-tease.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem quaerat voluptate explicabo mollitia, consequatur minus dicta at in iure expedita voluptas quis dolorem sit amet voluptatibus vel dolores culpa velit voluptatem tenetur. Autem perferendis minus ea magnam et incidunt voluptatem?</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+</div>
+<div class="col-12 col-sm-6 corona">
+<div class="card">
+  <img src="https://ichef.bbci.co.uk/news/1024/branded_news/108C7/production/_113438776_p08kzfym.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque, esse odio impedit, blanditiis tempore maiores at officia iste provident neque fugit perferendis labore iusto, ex voluptatem illum incidunt sunt obcaecati debitis similique facilis est nulla.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+</div> -->
 
 
     <!--Navigation bar-->
@@ -174,13 +195,3 @@
       </div>
     </div> -->
     <!-- <div>coronavirus PNG Designed By GraphicHost from <a href="https://pngtree.com/">Pngtree.com</a></div> -->
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkJLSTy_d7Y_EarIbeAad_1Ppm00zAF-Q&callback=initMap"
-        async defer></script>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/dropdown.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/transition.min.js"></script>
-        
-</body>
-</html>

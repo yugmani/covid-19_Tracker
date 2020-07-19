@@ -536,8 +536,7 @@ var mapAubergine = [
     }
   ]
 
-
-  // JAVASCRIPT STYLE ARRAY:
+ 
 
 const mapNavy = [
     {
