@@ -7,6 +7,8 @@
     
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/toggle_style.css">
+    <link rel="stylesheet" href="assets/css/extra_style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/dropdown.min.css">
@@ -24,8 +26,8 @@
   </head>
 <body>
   <div class="container-fluid main">
-      <div class="row first-row left-panel mb-3">
-          <div class="col-12 col-lg-9 d-flex flex-column">
+      <div class="row first-row">
+          <div class="col-12 col-lg-9 d-flex flex-column left-panel">
                 <div class="row header-container">
                     <div class="col-lg-8 col-sm-12 title-container">
                       <h1>C<img src="assets/images/pngtree-coronavirus.jpg" id="corona-image" width="50px" height="50px">vid-19 Tracker</h1>
@@ -42,7 +44,7 @@
                       </div>
                     </div>
                 </div>
-                <div class="row stats-container mb-2 mt-2">
+                <div class="row stats-container">
                     <div class="col-12 col-sm-4">
                       <div class="card cases active" onclick="changeDataSelection(this, 'cases');">
                         <div class="tab-selection"></div>
@@ -91,51 +93,44 @@
                 </div>
                 
                 <!-- MAP SECTION -->
-                <div class="row map-container flex-grow-1 mt-1 mb-2">
+                <div class="row map-container flex-grow-1 mt-2">
                     <div class="col">
                         <div class="map-info">
-                        
-                            <!--Google-Map container --->
+                           <!--Google-Map container --->
                             <div id="map"></div>
                 
                         </div>
                     </div>
                 </div>
 
-                
-
-
         </div> <!-- column closing -->
 
       <!--side-panel-container-->
-      <div class="col-12 col-lg-3 side-panel-container">
+      <div class="col-sm-12 col-lg-3 side-panel-container mt-1 mb-1">
 
             <!--Table for Countrywise data-->
-             <div class="row country-data" >
+             <div class="country-data">
                          
                     <h3 class="title-country-data">Live Cases By Country</h3>
                     <table class="table">
                         <tbody id="table-data">
                         </tbody>
                     </table>
+                    
             </div>
-    
+            
           </div> <!--for side-panel-container-->
         </div> <!--for first main row-->
 
-        <div class="row second-row">  <!--second main row--> 
-            <!-- NEWS SECTION -->
-            <div class="col-sm-12 col-lg-9 mb-3 mt-3">
-              <h2 class="corona-section ml-3">News of Corona Virus ...</h2>
-              <div class="corona-news">
-                
-
-              </div>
-
-            </div> <!--col of news section -->
-
+        <div class="row second-row mb-3 mt-3">  <!--second main row--> 
+            
              <!--CHART Container-->
-             <div class="col-sm-12 col-lg-3 chart-container mb-3 mt-3">
+             <div class="col-sm-12 col-lg-3 chart-container">
+              
+              <div class="mt-2 mb-1 giphy">
+                <img src="https://media.giphy.com/media/h45pDBwEdnmtThwroC/giphy.gif" class="giph">
+              </div>
+              
               <div class="p-2">
                 <canvas id="line-chart"></canvas>
               </div>
@@ -146,10 +141,31 @@
 
             </div>  <!--for col of chart section -->
 
+            <!-- NEWS SECTION -->
+            <div class="col-sm-12 col-lg-9 news-column">
+              <h2 class="news-heading ml-2 mb-2">News of Corona Virus ... </h2>
+              <div class="news-section">
+                
+
+              </div>
+
+            </div> <!--col of news section -->
+
         </div> <!--second main row closing-->
         
 
 </div> <!--for main-container-->
+<footer>
+  <h4 class="introduction-developer">Developed & Designed by: <span id="self-intro">Yoog Gurung</span></h4>
+  
+<div id="social-media">
+  <div><i class="fab fa-facebook-square"></i></div>
+  <div><i class="fab fa-instagram-square"></i></div>
+  <div><i class="fab fa-linkedin"></i></div>
+  <div><i class="fab fa-github-square"></i></div>
+</div>
+<small>coronavirus PNG Designed By GraphicHost from <a href="https://pngtree.com/">Pngtree.com</a></small>
+</footer>
        
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkJLSTy_d7Y_EarIbeAad_1Ppm00zAF-Q&callback=initMap"
         async defer></script>
@@ -162,36 +178,6 @@
 </body>
 </html>
 
+    
 
-<!-- <div class="col-12 col-lg-6 corona">
-  <div class="card">
-    <img src="https://cdn.cnn.com/cnnnext/dam/assets/200716092743-chris-evans-bridger-walker-dog-attack-good-stuff-newday-vpx-00012824-super-tease.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem quaerat voluptate explicabo mollitia, consequatur minus dicta at in iure expedita voluptas quis dolorem sit amet voluptatibus vel dolores culpa velit voluptatem tenetur. Autem perferendis minus ea magnam et incidunt voluptatem?</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-</div>
-<div class="col-12 col-sm-6 corona">
-<div class="card">
-  <img src="https://ichef.bbci.co.uk/news/1024/branded_news/108C7/production/_113438776_p08kzfym.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque, esse odio impedit, blanditiis tempore maiores at officia iste provident neque fugit perferendis labore iusto, ex voluptatem illum incidunt sunt obcaecati debitis similique facilis est nulla.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-</div> -->
-
-
-    <!--Navigation bar-->
-    <!-- <div id="nav">
-      <div id="toggle-button">
-        <label class="switch" >
-          <input type="checkbox"  >
-          <span class="slider round"></span>
-        </label>
-      </div>
-    </div> -->
-    <!-- <div>coronavirus PNG Designed By GraphicHost from <a href="https://pngtree.com/">Pngtree.com</a></div> -->
+   

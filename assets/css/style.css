@@ -8,8 +8,6 @@ body {
 
 .main {
     background-color:#F3F3F3;
-    /* max-width:1280px; */
-    /* min-height:900px; */
 }
 
 .left-panel {
@@ -50,9 +48,12 @@ body {
 .stats-container {
     min-height:100px;
     margin-top:0;
+    margin-bottom:10px;
 }
 
 .stats-container .card {
+    margin-top:10px;
+    margin-bottom:10px;
     background-color:#EFF;
     border-radius:12px;
     box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);
@@ -68,9 +69,7 @@ body {
 
 .stats-container .card-body {
     margin: 0;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 20px;
+    padding: 10px;
 }
 
 .stats-container .card-title {
@@ -112,7 +111,6 @@ body {
     transform:scale(1.02, 1.02);
 }
 
-
 .tab-selection {
    height: 10px;
    background-color:#cc1034;
@@ -140,7 +138,7 @@ body {
 /* MAP SECTION */
 
 .map-container {
-    height:430px;
+    height:450px;
     padding-top:10px;
 }
 
@@ -154,22 +152,18 @@ body {
     height: 100%;
 }
 
- 
 /* ******************************************************* */
  /* side panel container */
  /* COUNTRY DATA TABLE */
 
 .side-panel-container {
-    /* max-height:900px; */
     height:auto;
     background-color:#FFF;
-    /* background-color:whitesmoke;    */
-    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);  
 }
 
  .country-data {
-    max-height:100vh;
-    margin-top:15px;
+    max-height:900px;
+    padding-top:15px;
     overflow-y: scroll; 
     padding-left:8px;
  }
@@ -199,13 +193,23 @@ body {
 /* ******************************************************* */
  /* LINE GRAPH/CHART */
  .second-row {
-     display:flex;
-     flex-direction:row;
+     box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);
  }
 
-.chart-container {
+.giphy {
     background-color:lightgray;;
-    /* box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);  */
+    min-width:100%;
+    max-height:250px;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);
+}
+
+.giph {
+    min-width:100%;
+    max-height:250px;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);
+}
+
+.chart-container {
     height:100%;
     display:flex;
     flex-direction:column;  
@@ -214,57 +218,68 @@ body {
 
 #line-chart, #pie-chart {
     width:100%;
-    min-height:350px;
+    min-height:300px;
+    border-top:1px solid gray;
+    padding:8px;
+    background-color:lightgray;
+}
+
+#pie-chart {
     flex-grow:1;
 }
 
 /* ******************************************************* */
 /* News Section */
 
-.corona-news {
+.news-column {
+    max-height:100vh;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);
+    overflow-y:scroll;
+}
+
+.news-section {
     text-align:center;
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top:15px;
-    margin-bottom:15px;
 }
  
- .corona-section{
+ .news-heading {
      color:#8B0000;
- }
- .corona {
-     flex-grow:1;
-     background-color:lightgray;
+     padding-top:10px;
+     padding-bottom:10px;
  }
 
- .corona-news .card-body {
+ .news-card {
+     width:100%;
+     min-height:250px;
+     padding-top:10px;
+     padding-bottom:10px;
+ }
+
+ .news-body {
     text-align:left;
  }
- .corona-news img {
-     text-align:center;
-     width:80%;
-     height:auto;
+
+ .news-title {
+     padding-top:10px;
+     margin-bottom:10px;
+     color:#00008B;
+ }
+ 
+ .news-text {
+    padding-top:10px;
+    margin-bottom:10px;
  }
 
-/* ******************************************************* */
-/* Create animation for covid-19 image */
-@keyframes corona_animate {
-    0% {
-        transform:scale(1, 1);
-    }
-    35% {
-        transform:scale(1.02, 1.02);
-    }
-    
-    60% {
-        transform:scale(1.04, 1.04);
-    }
-    100% {
-        transform:scale(1.08, 1.06);
-    }
-    
-} /* @keyfram closing */
+ .news-image {
+    margin-top:10px;
+    margin-bottom:10px;
+ }
+
+ .news-image img {
+     text-align:center;
+     max-width:100%;
+     min-height:98%;
+     padding:5px;
+ }
 
 /* ******************************************************* */
 /* **Info Window Styling** */
@@ -297,16 +312,4 @@ body {
      max-width:100%;
      border-radius: 5px;
  }
-
-/* ******************************************************* */
-/* Extra Styling */
-#nav {
-    height: 50px;
-    display:flex;
-    flex-direction:row;
-    justify-content: space-around;
-    align-items: center;
-    padding-left:10px;
-}
-
 

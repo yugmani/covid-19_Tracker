@@ -1,0 +1,99 @@
+/* ******************************************************* */
+/*  Footer Section */
+
+footer {
+    padding:15px;
+    text-align:center;
+    background-color:black;
+    color:white;
+    height:200px;
+    border-top:5px solid yellow;
+}
+
+footer #social-media {
+    margin:0 auto;
+    display:flex;
+    flex-direction:row;
+    font-size:40px;
+    width:250px;
+    justify-content: space-between;
+    transition:1s;
+}
+
+#social-media .fab:hover  {
+    transform:scale(1.02, 1.02);
+    color:lightyellow;
+}
+
+
+/* ******************************************************* */
+/* Create animation for covid-19 image */
+@keyframes corona_animate {
+    0% {
+        transform:scale(1, 1);
+    }
+    35% {
+        transform:scale(1.02, 1.02);
+    }
+    
+    60% {
+        transform:scale(1.04, 1.04);
+    }
+    100% {
+        transform:scale(1.08, 1.06);
+    }
+    
+} /* @keyfram closing */
+
+/* ******************************************************* */
+/*MEDIA QUERY SECTION */
+
+@media only screen and (max-width: 600px) {
+  .stats-container {
+      height:auto;
+  }
+  .col-12 {
+      margin-bottom:10px;
+      margin-top:10px;
+  }
+  
+    .country-data {
+       max-height:300px;
+       overflow-y:scroll;
+   }
+
+   .news-card {
+       min-height:500px;
+       flex-grow:1;
+   }
+
+   .news-image {
+    width:auto;
+    height:auto;
+    }
+
+    .news-image img {
+        width:100%;
+        height:auto;
+    }
+
+
+   .news-column {
+    max-height:300px;
+    overflow-y:scroll;
+   }
+
+
+  } /* MEDIA QUERY CLOSING */
+
+
+/* ******************************************************* */
+/* Extra Styling */
+#nav {
+    height: 50px;
+    display:flex;
+    flex-direction:row;
+    justify-content: space-around;
+    align-items: center;
+    padding-left:10px;
+}

@@ -24,35 +24,34 @@ const buildChartData = (data)=>{
     //creating array of cases
     for(let date in data.cases){
         let newDataCases = {
-            x: date,
-            y: data.cases[date]
+                    x: date,
+                    y: data.cases[date]
+                }
+            chart1.push(newDataCases);
         }
-        chart1.push(newDataCases);
-    }
     chartData.push(chart1);
 
     //creating array of recovered
     for(let date in data.recovered){
         let newDataRecovered = {
-            x: date,
-            y: data.recovered[date]
-        }
+                x: date,
+                y: data.recovered[date]
+            }
         chart2.push(newDataRecovered);
     }
     // console.log(chartData);
    chartData.push(chart2);
 
    //creating array of deaths
-   for(let date in data.deaths){
-    let newDataDeaths= {
-        x: date,
-        y: data.deaths[date]
+    for(let date in data.deaths){
+            let newDataDeaths= {
+                x: date,
+                y: data.deaths[date]
+            }
+        chart3.push(newDataDeaths);
     }
-    chart3.push(newDataDeaths);
-}
-chartData.push(chart3);
+    chartData.push(chart3);
 
-// console.log(chartData);
     return chartData;
 }
 
@@ -117,9 +116,14 @@ const buildChart = (chartData)=>{
             title: {
                 display: true,
                 text: 'Historical Comparison',
+                showLines: false,
                 fontSize:25 
             },
-            
+            elements: {
+                line: {
+                    tension: 0 // disables bezier curves
+                }
+            },
             scales: {
                 xAxes: [{
                     gridlines: {
@@ -152,27 +156,3 @@ const buildChart = (chartData)=>{
     });
 }
 
-
-
- 
-// toggle dark mode
-const toggleStyle = ()=>{
-   
-    const togBtn = document.querySelector('#toggle-button');
-    // console.log(togBtn);
-    togBtn.addEventListener("click", function(e){
-    //  e.preventDefault();
-     console.log(togBtn);
-     if (mapStyle === mapRetro) {
-     
-         mapStyle = mapAubergine;
-         console.log(mapStyle);
-     }
-     else {
-         mapStyle = mapNavy;
-         console.log(mapStyle);
-     }
-    
- })
- return mapStyle;
- }

@@ -1,6 +1,5 @@
 
-// TO INITIALIZE GOOGLE MAP WITH COVID-19 DATA
-
+// INITIALIZE VARIABLES AND CONSTANTS
 var map;
 var infoWindow;
 let coronaGlobalData;   // to be used in the function getCountriesData().
@@ -26,7 +25,6 @@ var mapStyle = [
     mapAubergine
 ]
 
-
 // INITIALIZING FUNCTIONS WHILE LOADING WINDOW
 window.onload = () =>{
     getCountriesData();
@@ -48,7 +46,7 @@ function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: mapCenter,
         zoom: 3,
-        styles: mapStyle[3]
+        styles: mapStyle[1]
     });
     infoWindow = new google.maps.InfoWindow();
 }
@@ -110,7 +108,6 @@ const setSearchList = (data)=>{
     initDropdown(searchList);
 }
 
-
 // GETTING DATA COUNTRYWISE COVID-19 DATA FROM API
 const getCountriesData = ()=>{
     fetch("https://corona.lmao.ninja/v2/countries")
@@ -120,7 +117,7 @@ const getCountriesData = ()=>{
         coronaGlobalData = data;
         setSearchList(data);
         showDataOnMap(data);
-        showDataInTable(data);
+        sortCountryData(data);
     })
 }
 
@@ -166,7 +163,6 @@ const setStatsData = (data)=>{
     document.querySelector('.deaths-total').innerHTML = `${totalDeaths} Total`;
 }
 
-
 // SHOWING DATA ON GOOGLE-MAP
 const showDataOnMap = (data, casesType="cases")=>{
     data.map((country)=>{
@@ -188,7 +184,6 @@ const showDataOnMap = (data, casesType="cases")=>{
         });
 
         mapCircles.push(countryCircle);
-
 
         // INSERT DATA INTO INFO-WINDOW AND STYLING
         // style="background-image:url(${country.countryInfo.flag});"
@@ -217,7 +212,6 @@ const showDataOnMap = (data, casesType="cases")=>{
 
         // EVENT LISTENERS ON MOUSEOVER AND MOUSEOUT
         google.maps.event.addListener(countryCircle, 'mouseover', function() {
-            // infoWindow.setContent(html);
             infoWindow.open(map);
           });
 
@@ -227,7 +221,6 @@ const showDataOnMap = (data, casesType="cases")=>{
         
     })
 }
-
 
 // SHOWING COUNTRYWISE DATA IN TABLE
 const showDataInTable = (data) =>{
@@ -244,7 +237,22 @@ const showDataInTable = (data) =>{
     document.getElementById("table-data").innerHTML = html;
 }
 
+// Sorting countries based on cases
+const sortCountryData = (data)=>{
+    const sortedCountries = [];
+    data.forEach((country) => {
+        sortedCountries.push(country);
+    })
 
-const openInfoWindow = () => {
-    infoWindow.open(map);
-}
+    for (let i = 0; i < sortedCountries.length; i++) {
+       
+        for (let j=i; j < sortedCountries.length; j++) {
+            if (sortedCountries[i].cases < sortedCountries[j].cases) {
+                let max_obj = sortedCountries[i];
+                sortedCountries[i] = sortedCountries[j];
+                sortedCountries[j] = max_obj;
+            }
+        }
+    }
+    showDataInTable(sortedCountries);
+};
